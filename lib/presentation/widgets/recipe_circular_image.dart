@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/utils/colors.dart';
 
 class RecipeCircularImage extends StatelessWidget {
   const RecipeCircularImage({
@@ -16,18 +17,14 @@ class RecipeCircularImage extends StatelessWidget {
       height: 100,
       decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.white),
+          color: whiteColor),
       child: ClipOval(
-        child: Image.network(
+        child: imageUrl.isNotEmpty ? Image.network(
           imageUrl,
           width: 100,
           height: 100,
           fit: BoxFit.cover,
-          // image url is empty then show empty container
-          errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-            return Container();
-          },
-        )
+        ) : const SizedBox.shrink()
       ),
     );
   }

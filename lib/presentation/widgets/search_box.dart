@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_search_app/presentation/widgets/search_button.dart';
 import 'package:recipe_search_app/presentation/widgets/search_text_field.dart';
+import 'package:recipe_search_app/utils/colors.dart';
+import 'package:recipe_search_app/utils/constants.dart';
 
 import 'clear_search_field_button.dart';
 
@@ -19,11 +21,11 @@ class SearchBox extends StatelessWidget {
       alignment: Alignment.center,
       margin: const EdgeInsets.symmetric(horizontal: 16,),
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      width: MediaQuery.of(context).size.width,
+      width: getDeviceSize(context).width,
       height: 50,
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(32.0)),
-          color: Color(0xffff4163)),
+          color: secondaryColor),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/utils/colors.dart';
 
 class ClearSearchFieldButton extends StatelessWidget {
   const ClearSearchFieldButton({
@@ -12,6 +13,6 @@ class ClearSearchFieldButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(onPressed: (){
       _searchController.text = "";
-    }, icon: const Icon(Icons.clear,color: Colors.white,));
+    }, icon: const Icon(Icons.clear,color: whiteColor,));
   }
 }

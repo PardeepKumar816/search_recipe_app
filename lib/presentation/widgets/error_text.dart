@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/utils/colors.dart';
 
 
 class ErrorText extends StatelessWidget {
@@ -15,7 +16,7 @@ class ErrorText extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Text(
           message,
-          style: const TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.w400),
+          style: const TextStyle(color: redColor,fontSize: 20,fontWeight: FontWeight.w400),
           textAlign: TextAlign.center,
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/utils/colors.dart';
 
 class RecipeTextWidget extends StatelessWidget {
   const RecipeTextWidget({
@@ -15,7 +16,7 @@ class RecipeTextWidget extends StatelessWidget {
       child: Text(
         title, // recipe name
         style: const TextStyle(
-            color: Colors.white,
+            color: whiteColor,
             fontSize: 18,
             fontWeight: FontWeight.w700
         ),

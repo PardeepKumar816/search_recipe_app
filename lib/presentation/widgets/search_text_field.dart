@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/utils/colors.dart';
+import 'package:recipe_search_app/utils/constants.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
@@ -13,14 +15,14 @@ class SearchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width-160,
+      width: getDeviceSize(context).width-160,
       child: TextField(
         controller: _searchController,
         style:  const TextStyle(
-            color: Color(0xffffffff), fontSize: 20.0,fontWeight: FontWeight.w400),
+            color: whiteColor, fontSize: 20.0,fontWeight: FontWeight.w400),
         decoration: const  InputDecoration(
           hintText: "burger",
-          hintStyle: TextStyle(color: Color(0xfff0c8c7), fontSize: 20.0,fontWeight: FontWeight.w400),
+          hintStyle: TextStyle(color: valenciaColor, fontSize: 20.0,fontWeight: FontWeight.w400),
           border: InputBorder.none,
           contentPadding: EdgeInsets.zero,
         ),

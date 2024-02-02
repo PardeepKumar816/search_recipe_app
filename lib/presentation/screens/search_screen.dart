@@ -5,6 +5,8 @@ import 'package:recipe_search_app/bloc/recipe_bloc/recipe_events.dart';
 import 'package:recipe_search_app/presentation/widgets/heading_widget.dart';
 import 'package:recipe_search_app/presentation/widgets/search_box.dart';
 import 'package:recipe_search_app/presentation/widgets/search_recipe_bloc_builder_widget.dart';
+import 'package:recipe_search_app/utils/colors.dart';
+import 'package:recipe_search_app/utils/constants.dart';
 
 
 class SearchScreen extends StatefulWidget {
@@ -28,7 +30,8 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffe42648),
+      resizeToAvoidBottomInset: false,
+      backgroundColor: primaryColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,9 +50,9 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
           Expanded(
             child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 2,
-              color: Colors.white,
+              width: getDeviceSize(context).width,
+              height: getDeviceSize(context).height / 2,
+              color: whiteColor,
               // show list of recipes from api
               child: SearchRecipeBlocBuilderWidget(searchController: _searchController),
             ),

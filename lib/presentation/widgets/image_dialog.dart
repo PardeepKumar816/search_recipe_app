@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/utils/colors.dart';
+import 'package:recipe_search_app/utils/constants.dart';
 
 class ImageDialog extends StatelessWidget {
   final String imageUrl;
+  final String summary;
 
-  const ImageDialog({super.key, required this.imageUrl});
+  const ImageDialog({super.key, required this.imageUrl, required this.summary});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +18,8 @@ class ImageDialog extends StatelessWidget {
               Navigator.of(context).pop();
             },
             style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Color(0xffFF4163)),
-                foregroundColor: MaterialStatePropertyAll(Colors.white),
+                backgroundColor: MaterialStatePropertyAll(secondaryColor),
+                foregroundColor: MaterialStatePropertyAll(whiteColor),
                 textStyle: MaterialStatePropertyAll(TextStyle(
                   fontSize: 11,
                 )),
@@ -26,26 +29,39 @@ class ImageDialog extends StatelessWidget {
           ),
         ),
       ],
-      content: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height / 2,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          image: DecorationImage(
-            image: NetworkImage(imageUrl),
-            fit: BoxFit.cover,
-          ),
+      content: SingleChildScrollView(
+        child: Column(
+          children: [
+           imageUrl.isNotEmpty
+               ? Container(
+              width: getDeviceSize(context).width,
+              height: getDeviceSize(context).height/ 2,
+              decoration: BoxDecoration(
+                color: whiteColor,
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            )
+               : const SizedBox.shrink(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(removeHtmlTags(summary)),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-void showImageDialog(BuildContext context, String imageUrl) {
+
+void showImageDialog(BuildContext context, String imageUrl,String summary) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return ImageDialog(imageUrl: imageUrl);
+      return ImageDialog(imageUrl: imageUrl,summary: summary,);
     },
   );
 }

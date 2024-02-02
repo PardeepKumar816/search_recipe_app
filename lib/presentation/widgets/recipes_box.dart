@@ -5,6 +5,7 @@ import 'package:recipe_search_app/data/models/recipe_model.dart';
 import 'package:recipe_search_app/presentation/screens/recipe_details_screen.dart';
 import 'package:recipe_search_app/presentation/widgets/recipe_circular_image.dart';
 import 'package:recipe_search_app/presentation/widgets/recipe_text_widget.dart';
+import 'package:recipe_search_app/utils/colors.dart';
 
 import 'image_dialog.dart';
 
@@ -43,13 +44,13 @@ class RecipeBox extends StatelessWidget {
           }
           //  if recipe box is being use in recipe details screen
         } : (){
-          showImageDialog(context, element.image);
+          showImageDialog(context, element.image,element.summary);
         },
         child: Container(
           width: 250,
-          height: 210,
+          height: 240,
           decoration:  BoxDecoration(
-              color: element is Results ? const Color(0xffe42648) : const Color(0xffFF4163),
+              color: element is Results ? primaryColor : secondaryColor,
               borderRadius: const BorderRadius.all(Radius.circular(40))),
           child: Column(
             children: [
@@ -66,7 +67,7 @@ class RecipeBox extends StatelessWidget {
                // show the recipe image
                Text(
                element is Results ? "Click to Check Recipe" : "Click to View Image" ,
-                style: const TextStyle(color: Color(0xfff1e1e0)),
+                style: const TextStyle(color: whiteColor),
               ),
             ],
           ),

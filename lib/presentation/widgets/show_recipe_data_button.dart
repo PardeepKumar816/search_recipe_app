@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/utils/colors.dart';
 
 
 class ShowRecipeDataButton extends StatelessWidget {
@@ -21,9 +22,9 @@ class ShowRecipeDataButton extends StatelessWidget {
       },
       style: ButtonStyle(
           backgroundColor: MaterialStatePropertyAll(
-              isActive ? const Color(0xffFF4163) : Colors.white),
+              isActive ? primaryColor : whiteColor),
           foregroundColor:
-          MaterialStatePropertyAll(isActive ? Colors.white : Colors.black),
+          MaterialStatePropertyAll(isActive ? whiteColor : blackColor),
           textStyle: const MaterialStatePropertyAll(TextStyle(
             fontSize: 11,
           )),

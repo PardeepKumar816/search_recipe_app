@@ -5,6 +5,8 @@ import 'package:recipe_search_app/data/models/recipe_details_model.dart';
 import 'package:recipe_search_app/presentation/widgets/recipe_data_buttons_row.dart';
 import 'package:recipe_search_app/presentation/widgets/recipe_details_list_view.dart';
 import 'package:recipe_search_app/presentation/widgets/recipes_box.dart';
+import 'package:recipe_search_app/utils/colors.dart';
+import 'package:recipe_search_app/utils/constants.dart';
 
 
 class RecipeDetailsBlocProvider extends StatelessWidget {
@@ -26,11 +28,11 @@ class RecipeDetailsBlocProvider extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 2,
-                  decoration: const BoxDecoration(
-                      color: Color(0xffe42648),
-                      borderRadius: BorderRadius.only(
+                  width: getDeviceSize(context).width,
+                  height: getDeviceSize(context).height / 2,
+                  decoration: const  BoxDecoration(
+                      color: primaryColor,
+                      borderRadius:  BorderRadius.only(
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20))),
                   child: Column(

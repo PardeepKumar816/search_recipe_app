@@ -6,6 +6,7 @@ import 'package:recipe_search_app/bloc/recipe_bloc/recipe_states.dart';
 import 'package:recipe_search_app/presentation/widgets/error_text.dart';
 import 'package:recipe_search_app/presentation/widgets/loading_indicator.dart';
 import 'package:recipe_search_app/presentation/widgets/recipe_details_bloc_provider.dart';
+import 'package:recipe_search_app/utils/colors.dart';
 
 
 // here stateful widget is used only for initState
@@ -32,9 +33,9 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: whiteColor,
       appBar: AppBar(
-        backgroundColor: const Color(0xffe42648),
+        backgroundColor: primaryColor,
         elevation: 0,
       ),
       body: SafeArea(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/utils/colors.dart';
 
 class LoadingIndicator extends StatelessWidget {
   const LoadingIndicator({
@@ -8,7 +9,7 @@ class LoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: CircularProgressIndicator(color:Color(0xffe42648) ,),
+      child: CircularProgressIndicator(color:primaryColor ,),
     );
   }
 }
