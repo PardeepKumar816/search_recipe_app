@@ -47,6 +47,7 @@ class ImageDialog extends StatelessWidget {
                : const SizedBox.shrink(),
             Padding(
               padding: const EdgeInsets.all(8.0),
+              // removeHtmlTags will remove all html tags in summary string
               child: Text(removeHtmlTags(summary)),
             ),
           ],

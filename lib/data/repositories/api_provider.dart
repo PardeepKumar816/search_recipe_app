@@ -7,10 +7,13 @@ import 'package:http/http.dart' as http;
 import 'package:recipe_search_app/utils/strings.dart';
 
 class ApiProvider {
+  final http.Client _client;
+
+  ApiProvider(this._client);
 
    Future<RecipeModel> searchRecipes(String query) async {
     try {
-      final response = await http.get(
+      final response = await _client.get(
         Uri.parse("$baseURL/recipes/complexSearch?apiKey=$apiKey&query=$query"),
       );
       final data = json.decode(response.body);
@@ -22,7 +25,7 @@ class ApiProvider {
 
    Future<RecipeDetailsModel> getRecipeDetails(int recipeId) async {
     try {
-      final response = await http.get(
+      final response = await _client.get(
         Uri.parse(
             '$baseURL/recipes/$recipeId/information?apiKey=$apiKey&includeNutrition=true&addRecipeInformation=true'),
       );

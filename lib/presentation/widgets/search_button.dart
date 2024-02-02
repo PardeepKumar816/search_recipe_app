@@ -12,7 +12,7 @@ class SearchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        function.call();
+        function.call(context);
         // when tapping search button close the keyboard
         FocusScope.of(context).unfocus();
       },

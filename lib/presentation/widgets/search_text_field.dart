@@ -28,7 +28,7 @@ class SearchTextField extends StatelessWidget {
         ),
         onSubmitted: (value) {
           // onSubmitting call the addEvent function
-          function.call();
+          function.call(context);
         },
       ),
     );

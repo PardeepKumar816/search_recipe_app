@@ -11,10 +11,10 @@ import 'no_results_text.dart';
 class SearchRecipeBlocBuilderWidget extends StatelessWidget {
   const SearchRecipeBlocBuilderWidget({
     Key? key,
-    required TextEditingController searchController,
-  }) : _searchController = searchController, super(key: key);
+    required this.searchQuery
+  }) :super(key: key);
 
-  final TextEditingController _searchController;
+  final String searchQuery;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SearchRecipeBlocBuilderWidget extends StatelessWidget {
 
             if (state.data.results!.isEmpty) {
               // if list from api is empty then show no result text
-              return NoResultsText(searchController: _searchController);
+              return NoResultsText(searchQuery: searchQuery,);
             } else {
               // if list from api is not empty then show list of recipes
               return RecipesListWidget(recipesList: state.data.results!,);
@@ -35,6 +35,7 @@ class SearchRecipeBlocBuilderWidget extends StatelessWidget {
           } else if (state is ErrorState) {
             return  ErrorText(message: state.message,);
           }
+          // when user haven't search for any recipe until then show initial text
           return const InitialSearchText();
         });
   }

@@ -43,8 +43,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 const HeadingWidget(), // heading text
                 const SizedBox(height: 48,),
                 // textField for searching recipes
-                // addEvent function will be called on submit or search btn click
-                SearchBox(searchController: _searchController,function: _addEvent,),
+                SearchBox(searchController: _searchController),
               ],
             ),
           ),
@@ -54,27 +53,13 @@ class _SearchScreenState extends State<SearchScreen> {
               height: getDeviceSize(context).height / 2,
               color: whiteColor,
               // show list of recipes from api
-              child: SearchRecipeBlocBuilderWidget(searchController: _searchController),
+              child: SearchRecipeBlocBuilderWidget(searchQuery: _searchController.text),
             ),
           )
         ],
       ),
     );
   }
-
-  void _addEvent() {
-    String query = _searchController.text.trim();
-    if (query.isNotEmpty) {
-      // if query is not empty then fetch recipes from api by add event
-      BlocProvider.of<RecipeBloc>(context).add(FetchRecipeEvent(query));
-    } else {
-      // if query is empty after clicking submit button or search button then
-      // show snackBar
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Please Search for Recipes")));
-    }
-  }
-
 }
 
 
