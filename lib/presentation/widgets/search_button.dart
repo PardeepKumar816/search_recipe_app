@@ -13,6 +13,7 @@ class SearchButton extends StatelessWidget {
     return InkWell(
       onTap: () {
         function.call();
+        // when tapping search button close the keyboard
         FocusScope.of(context).unfocus();
       },
       child: Image.asset("assets/icons/search.png",

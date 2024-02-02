@@ -25,6 +25,7 @@ class SearchTextField extends StatelessWidget {
           contentPadding: EdgeInsets.zero,
         ),
         onSubmitted: (value) {
+          // onSubmitting call the addEvent function
           function.call();
         },
       ),

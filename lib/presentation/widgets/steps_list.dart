@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/data/models/recipe_details_model.dart';
 
-import '../../data/models/recipe_details_model.dart';
+
 
 class StepsList extends StatelessWidget {
   const StepsList({
@@ -21,7 +22,7 @@ class StepsList extends StatelessWidget {
             children: [
               Text(step.number.toString(),style: const TextStyle(fontSize: 24,fontWeight: FontWeight.w500)),
               const SizedBox(width: 12,),
-              Flexible(child: Text(step.step,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400))),
+              Flexible(child: Text(step.step!,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400))),
               //const SizedBox(height: 8.0),
             ],
           ),

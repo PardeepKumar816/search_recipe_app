@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/data/models/recipe_details_model.dart';
 
-import '../../data/models/recipe_details_model.dart';
+
 
 class NutritionList extends StatelessWidget {
   const NutritionList({

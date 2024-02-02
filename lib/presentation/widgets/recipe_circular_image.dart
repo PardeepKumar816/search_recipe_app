@@ -22,9 +22,12 @@ class RecipeCircularImage extends StatelessWidget {
           imageUrl,
           width: 100,
           height: 100,
-          fit: BoxFit
-              .cover, // You can adjust the BoxFit as needed
-        ),
+          fit: BoxFit.cover,
+          // image url is empty then show empty container
+          errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+            return Container();
+          },
+        )
       ),
     );
   }

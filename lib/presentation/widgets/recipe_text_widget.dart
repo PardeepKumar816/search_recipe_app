@@ -13,7 +13,7 @@ class RecipeTextWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Text(
-        title,
+        title, // recipe name
         style: const TextStyle(
             color: Colors.white,
             fontSize: 18,

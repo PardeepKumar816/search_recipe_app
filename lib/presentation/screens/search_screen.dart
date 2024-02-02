@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/recipie_bloc.dart';
-import '../../bloc/recipie_events.dart';
-import '../widgets/search_recipe_bloc_builder_widget.dart';
-import '../widgets/heading_widget.dart';
-import '../widgets/search_box.dart';
+import 'package:recipe_search_app/bloc/recipe_bloc/recipe_bloc.dart';
+import 'package:recipe_search_app/bloc/recipe_bloc/recipe_events.dart';
+import 'package:recipe_search_app/presentation/widgets/heading_widget.dart';
+import 'package:recipe_search_app/presentation/widgets/search_box.dart';
+import 'package:recipe_search_app/presentation/widgets/search_recipe_bloc_builder_widget.dart';
+
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -19,10 +20,10 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   void dispose() {
+    // stateful screen is used here for disposing TextEditingController
     _searchController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +37,10 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const HeadingWidget(),
-                const SizedBox(
-                  height: 48,
-                ),
+                const HeadingWidget(), // heading text
+                const SizedBox(height: 48,),
+                // textField for searching recipes
+                // addEvent function will be called on submit or search btn click
                 SearchBox(searchController: _searchController,function: _addEvent,),
               ],
             ),
@@ -49,6 +50,7 @@ class _SearchScreenState extends State<SearchScreen> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 2,
               color: Colors.white,
+              // show list of recipes from api
               child: SearchRecipeBlocBuilderWidget(searchController: _searchController),
             ),
           )
@@ -60,8 +62,11 @@ class _SearchScreenState extends State<SearchScreen> {
   void _addEvent() {
     String query = _searchController.text.trim();
     if (query.isNotEmpty) {
+      // if query is not empty then fetch recipes from api by add event
       BlocProvider.of<RecipeBloc>(context).add(FetchRecipeEvent(query));
     } else {
+      // if query is empty after clicking submit button or search button then
+      // show snackBar
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Please Search for Recipes")));
     }

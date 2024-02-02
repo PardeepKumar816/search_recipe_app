@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_search_app/presentation/widgets/recipes_box.dart';
-import '../../bloc/recipie_bloc.dart';
-import '../../bloc/recipie_events.dart';
-import '../../bloc/recipie_states.dart';
-import '../widgets/error_text.dart';
-import '../widgets/loading_indicator.dart';
-import '../widgets/recipe_data_buttons_row.dart';
-import '../widgets/recipe_details_list_view.dart';
+import 'package:recipe_search_app/bloc/recipe_bloc/recipe_bloc.dart';
+import 'package:recipe_search_app/bloc/recipe_bloc/recipe_events.dart';
+import 'package:recipe_search_app/bloc/recipe_bloc/recipe_states.dart';
+import 'package:recipe_search_app/presentation/widgets/error_text.dart';
+import 'package:recipe_search_app/presentation/widgets/loading_indicator.dart';
+import 'package:recipe_search_app/presentation/widgets/recipe_details_bloc_provider.dart';
 
+
+// here stateful widget is used only for initState
 class RecipeDetailsScreen extends StatefulWidget {
   final int recipeId;
 
@@ -20,9 +20,6 @@ class RecipeDetailsScreen extends StatefulWidget {
 }
 
 class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
-  bool _showIngredients = true;
-  bool _showSteps = false;
-  bool _showNutrition = false;
 
   @override
   void initState() {
@@ -32,17 +29,11 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
         .add(FetchRecipeDetailsEvent(widget.recipeId));
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Icons.arrow_back), onPressed: () {
-         // BlocProvider.of<RecipeBloc>(context,listen: false).add(FetchRecipeEvent(query));
-          Navigator.pop(context);
-        },),
         backgroundColor: const Color(0xffe42648),
         elevation: 0,
       ),
@@ -51,64 +42,21 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
           if (state is LoadingState) {
             return const LoadingIndicator();
           } else if (state is LoadedRecipeDetailsState) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 2,
-                      decoration: const BoxDecoration(
-                          color: Color(0xffe42648),
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20))),
-                      child: Column(
-                        children: [
-                          RecipeBox(element: state.data),
-                          const SizedBox(height: 24,),
-                          RecipeDataButtonsRow(
-                              showIngredients: _showIngredients,
-                              showSteps: _showSteps,
-                              showNutrition: _showNutrition,
-                            function: _activeButton,
-                          )
-                        ],
-                      )),
-                ),
-                Expanded(
-                  child: RecipeDetailsListView(
-                    model: state.data,
-                    showIngredients: _showIngredients,
-                    showNutrition: _showNutrition,
-                    showSteps: _showSteps,
-                  ),
-                ),
-              ],
-            );
+            // on successful recipe details fetch
+            return  RecipeDetailsBlocProvider(model:state.data);
           } else if (state is ErrorState) {
-            return ErrorText(
-              message: state.message,
-            );
+            return ErrorText(message: state.message,);
           } else {
-            return const Center(
-              child: Text('Unknown State'),
+            return const Center(child: Text('Unknown State'),
             );
           }
         }),
       ),
     );
   }
-
-  void _activeButton(bool showIngredients, bool showSteps, bool showNutrition) {
-    setState(() {
-      _showIngredients = showIngredients;
-      _showSteps = showSteps;
-      _showNutrition = showNutrition;
-    });
-  }
 }
+
+
 
 
 

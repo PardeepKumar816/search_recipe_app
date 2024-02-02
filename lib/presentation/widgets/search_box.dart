@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipe_search_app/presentation/widgets/search_button.dart';
 import 'package:recipe_search_app/presentation/widgets/search_text_field.dart';
 
+import 'clear_search_field_button.dart';
+
 class SearchBox extends StatelessWidget {
   const SearchBox({
     Key? key,
@@ -25,10 +27,13 @@ class SearchBox extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          // search btn with search icon
           SearchButton(function: function),
           const SizedBox(width: 12,),
+          // text field for inserting query for recipe search
           SearchTextField(searchController: _searchController, function: function),
           const SizedBox(width: 12,),
+          // icon btn to clear search text field
           ClearSearchFieldButton(searchController: _searchController),
         ],
       ),
@@ -36,18 +41,3 @@ class SearchBox extends StatelessWidget {
   }
 }
 
-class ClearSearchFieldButton extends StatelessWidget {
-  const ClearSearchFieldButton({
-    Key? key,
-    required TextEditingController searchController,
-  }) : _searchController = searchController, super(key: key);
-
-  final TextEditingController _searchController;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(onPressed: (){
-      _searchController.text = "";
-    }, icon: const Icon(Icons.clear,color: Colors.white,));
-  }
-}

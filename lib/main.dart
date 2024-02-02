@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_search_app/presentation/screens/search_screen.dart';
-
-import 'bloc/recipie_bloc.dart';
+import 'bloc/recipe_bloc/recipe_bloc.dart';
 
 
 void main() {
@@ -24,14 +23,6 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             home: const SearchScreen(),
-            // BlocProvider<RecipeBloc>(
-            //   create: (context) => RecipeBloc(),
-            //   child: Builder(
-            //     builder: (context) {
-            //       return const SearchScreen();
-            //     }
-            //   ),
-            // )
     )
 
     );

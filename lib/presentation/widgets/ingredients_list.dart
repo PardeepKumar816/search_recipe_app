@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/data/models/recipe_details_model.dart';
 
-import '../../data/models/recipe_details_model.dart';
 
 class IngredientsList extends StatelessWidget {
   const IngredientsList({
@@ -21,7 +21,7 @@ class IngredientsList extends StatelessWidget {
             children: [
               const Icon(Icons.arrow_forward, size: 24, color: Colors.black),
               const SizedBox(width: 8,),
-              Flexible(child: Text(ingredient.original,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400),)),
+              Flexible(child: Text(ingredient.original!,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400),)),
             ],
           ),
         ),

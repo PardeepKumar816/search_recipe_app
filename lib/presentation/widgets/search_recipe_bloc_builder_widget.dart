@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_search_app/bloc/recipe_bloc/recipe_bloc.dart';
+import 'package:recipe_search_app/bloc/recipe_bloc/recipe_states.dart';
 import 'package:recipe_search_app/presentation/widgets/recipes_list_widget.dart';
-import '../../bloc/recipie_bloc.dart';
-import '../../bloc/recipie_states.dart';
 import 'error_text.dart';
 import 'initial_search_text.dart';
 import 'loading_indicator.dart';
@@ -24,10 +24,12 @@ class SearchRecipeBlocBuilderWidget extends StatelessWidget {
             return const LoadingIndicator();
           } else if (state is LoadedRecipeState) {
 
-            if (state.data.results.isEmpty) {
+            if (state.data.results!.isEmpty) {
+              // if list from api is empty then show no result text
               return NoResultsText(searchController: _searchController);
             } else {
-              return RecipesListWidget(results: state.data.results,);
+              // if list from api is not empty then show list of recipes
+              return RecipesListWidget(recipesList: state.data.results!,);
             }
 
           } else if (state is ErrorState) {

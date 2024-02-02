@@ -1,3 +1,7 @@
+// if any value from api is null then default value will be assigned
+// based on data type e.g "", 0, [], {}
+
+
 class RecipeModel {
   RecipeModel({
     required this.results,
@@ -5,21 +9,21 @@ class RecipeModel {
     required this.number,
     required this.totalResults,
   });
-  late final List<Results> results;
-  late final int offset;
-  late final int number;
-  late final int totalResults;
+    List<Results>? results;
+    int? offset;
+    int? number;
+    int? totalResults;
 
   RecipeModel.fromJson(Map<String, dynamic> json){
-    results = List.from(json['results']).map((e)=>Results.fromJson(e)).toList();
-    offset = json['offset'];
-    number = json['number'];
-    totalResults = json['totalResults'];
+    results = List.from(json['results']??[]).map((e)=>Results.fromJson(e)).toList();
+    offset = json['offset']??0;
+    number = json['number']??0;
+    totalResults = json['totalResults']??0;
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['results'] = results.map((e)=>e.toJson()).toList();
+    data['results'] = results!.map((e)=>e.toJson()).toList();
     data['offset'] = offset;
     data['number'] = number;
     data['totalResults'] = totalResults;
@@ -34,16 +38,16 @@ class Results {
     required this.image,
     required this.imageType,
   });
-  late final int id;
-  late final String title;
-  late final String image;
-  late final String imageType;
+  int? id;
+   String? title;
+   String? image;
+   String? imageType;
 
   Results.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    title = json['title'];
-    image = json['image'];
-    imageType = json['imageType'];
+    id = json['id']??0;
+    title = json['title']??"";
+    image = json['image']??"";
+    imageType = json['imageType']??"";
   }
 
   Map<String, dynamic> toJson() {

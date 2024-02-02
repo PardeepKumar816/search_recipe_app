@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class ShowRecipeDataButton extends StatelessWidget {
   const ShowRecipeDataButton(
       {Key? key,
@@ -16,13 +17,7 @@ class ShowRecipeDataButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        if (text == "Ingredients") {
-          function.call(true, false, false);
-        } else if (text == "Steps") {
-          function.call(false, true, false);
-        } else {
-          function.call(false, false, true);
-        }
+        function.call();
       },
       style: ButtonStyle(
           backgroundColor: MaterialStatePropertyAll(
@@ -37,5 +32,6 @@ class ShowRecipeDataButton extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(13))))),
       child: Text(text),
     );
+
   }
 }

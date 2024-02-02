@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_search_app/data/models/recipe_model.dart';
 import 'package:recipe_search_app/presentation/widgets/recipes_box.dart';
 
 class RecipesListWidget extends StatelessWidget {
   const RecipesListWidget({
-    Key? key,required this.results
+    Key? key,required this.recipesList
   }) : super(key: key);
 
-  final List results;
+  final List<Results> recipesList;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,12 @@ class RecipesListWidget extends StatelessWidget {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-              children: results.map((e) {
-                return RecipeBox(element: e,);
-              }).toList()
+              children:[
+                 ...recipesList.map((e) {
+                   // show each element with title, and image
+                  return RecipeBox(element: e,);
+                }).toList() ,
+              ]
           ),
         )
 

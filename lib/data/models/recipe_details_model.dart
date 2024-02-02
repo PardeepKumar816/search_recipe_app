@@ -1,3 +1,6 @@
+// if any value from api is null then default value will be assigned
+// based on data type e.g "", 0, [], {}
+
 class RecipeDetailsModel {
   RecipeDetailsModel({
     required this.vegetarian,
@@ -39,48 +42,48 @@ class RecipeDetailsModel {
     required this.spoonacularScore,
     required this.spoonacularSourceUrl,
   });
-  late final bool vegetarian;
-  late final bool vegan;
-  late final bool glutenFree;
-  late final bool dairyFree;
-  late final bool veryHealthy;
-  late final bool cheap;
-  late final bool veryPopular;
-  late final bool sustainable;
-  late final bool lowFodmap;
-  late final int weightWatcherSmartPoints;
-  late final String gaps;
-  late final int preparationMinutes;
-  late final int cookingMinutes;
-  late final int aggregateLikes;
-  late final int healthScore;
-  late final String creditsText;
-  late final String sourceName;
-  late final double pricePerServing;
-  late final List<ExtendedIngredients> extendedIngredients;
-  late final int id;
-  late final String title;
-  late final int readyInMinutes;
-  late final int servings;
-  late final String sourceUrl;
-  late final String image;
-  late final String imageType;
-  late final Nutrition nutrition;
-  late final String summary;
-  late final List<dynamic> cuisines;
-  late final List<String> dishTypes;
-  late final List<dynamic> diets;
-  late final List<dynamic> occasions;
-  late final WinePairing winePairing;
-  late final String instructions;
-  late final List<AnalyzedInstructions> analyzedInstructions;
-  late final dynamic originalId;
-  late final double spoonacularScore;
-  late final String spoonacularSourceUrl;
+   bool? vegetarian;
+   bool? vegan;
+   bool? glutenFree;
+   bool? dairyFree;
+   bool? veryHealthy;
+   bool? cheap;
+   bool? veryPopular;
+   bool? sustainable;
+   bool? lowFodmap;
+   int? weightWatcherSmartPoints;
+   String? gaps;
+   int? preparationMinutes;
+   int? cookingMinutes;
+   int? aggregateLikes;
+   int? healthScore;
+   String? creditsText;
+  String? sourceName;
+   double? pricePerServing;
+   List<ExtendedIngredients>? extendedIngredients;
+   int? id;
+   String? title;
+   int? readyInMinutes;
+   int? servings;
+  String? sourceUrl;
+   String? image;
+   String? imageType;
+   Nutrition? nutrition;
+   String? summary;
+   List<dynamic>? cuisines;
+  List<String>? dishTypes;
+   List<dynamic>? diets;
+   List<dynamic>? occasions;
+   WinePairing? winePairing;
+  String? instructions;
+   List<AnalyzedInstructions>? analyzedInstructions;
+   dynamic originalId;
+   double? spoonacularScore;
+   String? spoonacularSourceUrl;
 
   RecipeDetailsModel.fromJson(Map<String, dynamic> json){
     vegetarian = json['vegetarian'] ?? false;
-    vegan = json['vegan'];
+    vegan = json['vegan'] ?? false;
     glutenFree = json['glutenFree'] ?? false;
     dairyFree = json['dairyFree'] ?? false;
     veryHealthy = json['veryHealthy'] ?? false;
@@ -139,7 +142,7 @@ class RecipeDetailsModel {
     data['creditsText'] = creditsText;
     data['sourceName'] = sourceName;
     data['pricePerServing'] = pricePerServing;
-    data['extendedIngredients'] = extendedIngredients.map((e)=>e.toJson()).toList();
+    data['extendedIngredients'] = extendedIngredients!.map((e)=>e.toJson()).toList();
     data['id'] = id;
     data['title'] = title;
     data['readyInMinutes'] = readyInMinutes;
@@ -147,15 +150,15 @@ class RecipeDetailsModel {
     data['sourceUrl'] = sourceUrl;
     data['image'] = image;
     data['imageType'] = imageType;
-    data['nutrition'] = nutrition.toJson();
+    data['nutrition'] = nutrition!.toJson();
     data['summary'] = summary;
     data['cuisines'] = cuisines;
     data['dishTypes'] = dishTypes;
     data['diets'] = diets;
     data['occasions'] = occasions;
-    data['winePairing'] = winePairing.toJson();
+    data['winePairing'] = winePairing!.toJson();
     data['instructions'] = instructions;
-    data['analyzedInstructions'] = analyzedInstructions.map((e)=>e.toJson()).toList();
+    data['analyzedInstructions'] = analyzedInstructions!.map((e)=>e.toJson()).toList();
     data['originalId'] = originalId;
     data['spoonacularScore'] = spoonacularScore;
     data['spoonacularSourceUrl'] = spoonacularSourceUrl;
@@ -178,32 +181,32 @@ class ExtendedIngredients {
     required this.meta,
     required this.measures,
   });
-  late final int id;
-  late final String aisle;
-  late final String image;
-  late final String consistency;
-  late final String name;
-  late final String nameClean;
-  late final String original;
-  late final String originalName;
-  late final double? amount;
-  late final String unit;
-  late final List<String> meta;
-  late final Measures measures;
+   int? id;
+   String? aisle;
+   String? image;
+   String? consistency;
+   String? name;
+   String? nameClean;
+   String? original;
+   String? originalName;
+   double? amount;
+   String? unit;
+   List<String>? meta;
+   Measures? measures;
 
   ExtendedIngredients.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    aisle = json['aisle'];
-    image = json['image'];
-    consistency = json['consistency'];
-    name = json['name'];
-    nameClean = json['nameClean'];
-    original = json['original'];
-    originalName = json['originalName'];
-    amount = json['amount'];
-    unit = json['unit'];
-    meta = List<String>.from(json['meta']);
-    measures = Measures.fromJson(json['measures']);
+    id = json['id']??0;
+    aisle = json['aisle']??"";
+    image = json['image']??"";
+    consistency = json['consistency']??"";
+    name = json['name']??"";
+    nameClean = json['nameClean']??"";
+    original = json['original']??"";
+    originalName = json['originalName']??"";
+    amount = json['amount']??0;
+    unit = json['unit']??0;
+    meta = List<String>.from(json['meta']??[]);
+    measures = Measures.fromJson(json['measures']??{});
   }
 
   Map<String, dynamic> toJson() {
@@ -219,7 +222,7 @@ class ExtendedIngredients {
     data['amount'] = amount;
     data['unit'] = unit;
     data['meta'] = meta;
-    data['measures'] = measures.toJson();
+    data['measures'] = measures!.toJson();
     return data;
   }
 }
@@ -229,18 +232,18 @@ class Measures {
     required this.us,
     required this.metric,
   });
-  late final Us us;
-  late final Metric metric;
+   Us? us;
+   Metric? metric;
 
   Measures.fromJson(Map<String, dynamic> json){
-    us = Us.fromJson(json['us']);
-    metric = Metric.fromJson(json['metric']);
+    us = Us.fromJson(json['us']??{});
+    metric = Metric.fromJson(json['metric']??{});
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['us'] = us.toJson();
-    data['metric'] = metric.toJson();
+    data['us'] = us!.toJson();
+    data['metric'] = metric!.toJson();
     return data;
   }
 }
@@ -251,14 +254,14 @@ class Us {
     required this.unitShort,
     required this.unitLong,
   });
-  late final double? amount;
-  late final String unitShort;
-  late final String unitLong;
+  double? amount;
+   String? unitShort;
+   String? unitLong;
 
   Us.fromJson(Map<String, dynamic> json){
-    amount = json['amount'];
-    unitShort = json['unitShort'];
-    unitLong = json['unitLong'];
+    amount = json['amount']??0;
+    unitShort = json['unitShort']??"";
+    unitLong = json['unitLong']??"";
   }
 
   Map<String, dynamic> toJson() {
@@ -276,14 +279,14 @@ class Metric {
     required this.unitShort,
     required this.unitLong,
   });
-  late final double? amount;
-  late final String unitShort;
-  late final String unitLong;
+   double? amount;
+   String? unitShort;
+   String? unitLong;
 
   Metric.fromJson(Map<String, dynamic> json){
-    amount = json['amount'];
-    unitShort = json['unitShort'];
-    unitLong = json['unitLong'];
+    amount = json['amount']??0;
+    unitShort = json['unitShort']??"";
+    unitLong = json['unitLong']??"";
   }
 
   Map<String, dynamic> toJson() {
@@ -304,12 +307,12 @@ class Nutrition {
     required this.caloricBreakdown,
     required this.weightPerServing,
   });
-  late final List<Nutrients> nutrients;
-  late final List<Properties> properties;
-  late final List<Flavonoids> flavonoids;
-  late final List<Ingredients> ingredients;
-  late final CaloricBreakdown caloricBreakdown;
-  late final WeightPerServing weightPerServing;
+   List<Nutrients>? nutrients;
+   List<Properties>? properties;
+   List<Flavonoids>? flavonoids;
+   List<Ingredients>? ingredients;
+   CaloricBreakdown? caloricBreakdown;
+   WeightPerServing? weightPerServing;
 
   Nutrition.fromJson(Map<String, dynamic> json){
     nutrients = List.from(json['nutrients'] ?? []).map((e)=>Nutrients.fromJson(e)).toList();
@@ -322,12 +325,12 @@ class Nutrition {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['nutrients'] = nutrients.map((e)=>e.toJson()).toList();
-    data['properties'] = properties.map((e)=>e.toJson()).toList();
-    data['flavonoids'] = flavonoids.map((e)=>e.toJson()).toList();
-    data['ingredients'] = ingredients.map((e)=>e.toJson()).toList();
-    data['caloricBreakdown'] = caloricBreakdown.toJson();
-    data['weightPerServing'] = weightPerServing.toJson();
+    data['nutrients'] = nutrients!.map((e)=>e.toJson()).toList();
+    data['properties'] = properties!.map((e)=>e.toJson()).toList();
+    data['flavonoids'] = flavonoids!.map((e)=>e.toJson()).toList();
+    data['ingredients'] = ingredients!.map((e)=>e.toJson()).toList();
+    data['caloricBreakdown'] = caloricBreakdown!.toJson();
+    data['weightPerServing'] = weightPerServing!.toJson();
     return data;
   }
 }
@@ -339,10 +342,10 @@ class Nutrients {
     required this.unit,
     required this.percentOfDailyNeeds,
   });
-  late final String name;
-  late final double amount;
-  late final String unit;
-  late final double percentOfDailyNeeds;
+   String? name;
+   double? amount;
+   String? unit;
+   double? percentOfDailyNeeds;
 
   Nutrients.fromJson(Map<String, dynamic> json){
     name = json['name'] ?? "";
@@ -367,14 +370,14 @@ class Properties {
     required this.amount,
     required this.unit,
   });
-  late final String name;
-  late final double? amount;
-  late final String unit;
+   String? name;
+   double? amount;
+   String? unit;
 
   Properties.fromJson(Map<String, dynamic> json){
-    name = json['name'];
-    amount = json['amount'];
-    unit = json['unit'];
+    name = json['name']??"";
+    amount = json['amount']??0;
+    unit = json['unit']??"";
   }
 
   Map<String, dynamic> toJson() {
@@ -392,14 +395,14 @@ class Flavonoids {
     required this.amount,
     required this.unit,
   });
-  late final String name;
-  late final double amount;
-  late final String unit;
+   String? name;
+   double? amount;
+   String? unit;
 
   Flavonoids.fromJson(Map<String, dynamic> json){
-    name = json['name'];
-    amount = json['amount'];
-    unit = json['unit'];
+    name = json['name']??"";
+    amount = json['amount']??0;
+    unit = json['unit']??"";
   }
 
   Map<String, dynamic> toJson() {
@@ -419,11 +422,11 @@ class Ingredients {
     required this.unit,
     required this.nutrients,
   });
-  late final int id;
-  late final String name;
-  late final double? amount;
-  late final String unit;
-  late final List<Nutrients> nutrients;
+   int? id;
+   String? name;
+  double? amount;
+   String? unit;
+  List<Nutrients>? nutrients;
 
   Ingredients.fromJson(Map<String, dynamic> json){
     id = json['id'] ?? 0;
@@ -439,7 +442,7 @@ class Ingredients {
     data['name'] = name;
     data['amount'] = amount;
     data['unit'] = unit;
-    data['nutrients'] = nutrients.map((e)=>e.toJson()).toList();
+    data['nutrients'] = nutrients!.map((e)=>e.toJson()).toList();
     return data;
   }
 }
@@ -450,9 +453,9 @@ class CaloricBreakdown {
     required this.percentFat,
     required this.percentCarbs,
   });
-  late final double percentProtein;
-  late final double percentFat;
-  late final double percentCarbs;
+   double? percentProtein;
+   double? percentFat;
+   double? percentCarbs;
 
   CaloricBreakdown.fromJson(Map<String, dynamic> json){
     percentProtein = json['percentProtein'] ?? 0;
@@ -474,8 +477,8 @@ class WeightPerServing {
     required this.amount,
     required this.unit,
   });
-  late final int amount;
-  late final String unit;
+  int? amount;
+   String? unit;
 
   WeightPerServing.fromJson(Map<String, dynamic> json){
     amount = json['amount'] ?? 0;
@@ -496,9 +499,9 @@ class WinePairing {
     required this.pairingText,
     required this.productMatches,
   });
-  late final List<dynamic> pairedWines;
-  late final String pairingText;
-  late final List<dynamic> productMatches;
+   List<dynamic>? pairedWines;
+   String? pairingText;
+   List<dynamic>? productMatches;
 
   WinePairing.fromJson(Map<String, dynamic> json){
     pairedWines = List.castFrom<dynamic, dynamic>(json['pairedWines'] ?? []);
@@ -520,8 +523,8 @@ class AnalyzedInstructions {
     required this.name,
     required this.steps,
   });
-  late final String name;
-  late final List<Steps> steps;
+   String? name;
+   List<Steps>? steps;
 
   AnalyzedInstructions.fromJson(Map<String, dynamic> json){
     name = json['name'] ?? "";
@@ -531,7 +534,7 @@ class AnalyzedInstructions {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['name'] = name;
-    data['steps'] = steps.map((e)=>e.toJson()).toList();
+    data['steps'] = steps!.map((e)=>e.toJson()).toList();
     return data;
   }
 }
@@ -543,10 +546,10 @@ class Steps {
     required this.ingredients,
     required this.equipment,
   });
-  late final int number;
-  late final String step;
-  late final List<Ingredients> ingredients;
-  late final List<Equipment> equipment;
+   int? number;
+   String? step;
+   List<Ingredients>? ingredients;
+   List<Equipment>? equipment;
 
   Steps.fromJson(Map<String, dynamic> json){
     number = json['number'] ?? 0;
@@ -559,8 +562,8 @@ class Steps {
     final data = <String, dynamic>{};
     data['number'] = number;
     data['step'] = step;
-    data['ingredients'] = ingredients.map((e)=>e.toJson()).toList();
-    data['equipment'] = equipment.map((e)=>e.toJson()).toList();
+    data['ingredients'] = ingredients!.map((e)=>e.toJson()).toList();
+    data['equipment'] = equipment!.map((e)=>e.toJson()).toList();
     return data;
   }
 }
@@ -572,10 +575,10 @@ class Equipment {
     required this.localizedName,
     required this.image,
   });
-  late final int id;
-  late final String name;
-  late final String localizedName;
-  late final String image;
+   int? id;
+   String? name;
+   String? localizedName;
+   String? image;
 
   Equipment.fromJson(Map<String, dynamic> json){
     id = json['id'] ?? 0;
