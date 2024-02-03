@@ -11,6 +11,7 @@ class RecipeBloc extends Bloc<RecipeEvents,RecipeState>{
   RecipeBloc() : super(InitialState()){
 
     final apiRepository = ApiRepository();
+
    // fetching list of recipes based on search query or ingredient
     on<FetchRecipeEvent>((event, emit) async {
       try {

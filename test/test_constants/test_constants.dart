@@ -1,9 +1,15 @@
+import 'package:recipe_search_app/data/models/recipe_model.dart';
 import 'package:recipe_search_app/utils/strings.dart';
 
 final searchRecipeUrl =
     Uri.parse("$baseURL/recipes/complexSearch?apiKey=$apiKey&query=pasta");
+
 final getRecipeDetailsUrl = Uri.parse(
     '$baseURL/recipes/654857/information?apiKey=$apiKey&includeNutrition=true&addRecipeInformation=true');
+
+
+
+
 
 const searchRecipeJsonString = """  
  {
