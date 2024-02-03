@@ -13,9 +13,9 @@ class SearchBox extends StatelessWidget {
   const SearchBox({
     Key? key,
     required TextEditingController searchController,
-  }) : _searchController = searchController, super(key: key);
+  }) : _searchTextController = searchController, super(key: key);
 
-  final TextEditingController _searchController;
+  final TextEditingController _searchTextController;
   // final Function function;
 
   @override
@@ -37,17 +37,17 @@ class SearchBox extends StatelessWidget {
           SearchButton(function: _addEvent),
           const SizedBox(width: 12,),
           // text field for inserting query for recipe search
-          SearchTextField(searchController: _searchController, function: _addEvent),
+          SearchTextField(searchTextController: _searchTextController, function: _addEvent),
           const SizedBox(width: 12,),
           // icon btn to clear search text field
-          ClearSearchFieldButton(searchController: _searchController),
+          ClearSearchFieldButton(searchTextController: _searchTextController),
         ],
       ),
     );
   }
 
   void _addEvent(BuildContext context) {
-    String query = _searchController.text.trim();
+    String query = _searchTextController.text.trim();
     if (query.isNotEmpty) {
       // if query is not empty then fetch recipes from api by add event
       BlocProvider.of<RecipeBloc>(context).add(FetchRecipeEvent(query));

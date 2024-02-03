@@ -4,15 +4,17 @@ import 'package:recipe_search_app/utils/colors.dart';
 class ClearSearchFieldButton extends StatelessWidget {
   const ClearSearchFieldButton({
     Key? key,
-    required TextEditingController searchController,
-  }) : _searchController = searchController, super(key: key);
+    required TextEditingController searchTextController,
+  }) : _searchTextController = searchTextController, super(key: key);
 
-  final TextEditingController _searchController;
+  final TextEditingController _searchTextController;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(onPressed: (){
-      _searchController.text = "";
-    }, icon: const Icon(Icons.clear,color: whiteColor,));
+      _searchTextController.text = "";
+    }, icon: const Icon(Icons.clear,color: whiteColor,),
+      tooltip: 'Clear Search',
+    );
   }
 }

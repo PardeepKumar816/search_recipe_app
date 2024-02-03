@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_search_app/bloc/recipe_bloc/recipe_bloc.dart';
-import 'package:recipe_search_app/bloc/recipe_bloc/recipe_events.dart';
 import 'package:recipe_search_app/presentation/widgets/heading_widget.dart';
 import 'package:recipe_search_app/presentation/widgets/search_box.dart';
 import 'package:recipe_search_app/presentation/widgets/search_recipe_bloc_builder_widget.dart';
 import 'package:recipe_search_app/utils/colors.dart';
 import 'package:recipe_search_app/utils/constants.dart';
 
-
+// stateful screen is used here for disposing TextEditingController
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
 
@@ -18,14 +15,8 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final _searchController = TextEditingController();
+  final _searchTextController = TextEditingController();
 
-  @override
-  void dispose() {
-    // stateful screen is used here for disposing TextEditingController
-    _searchController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 const HeadingWidget(), // heading text
                 const SizedBox(height: 48,),
                 // textField for searching recipes
-                SearchBox(searchController: _searchController),
+                SearchBox(searchController: _searchTextController),
               ],
             ),
           ),
@@ -53,13 +44,20 @@ class _SearchScreenState extends State<SearchScreen> {
               height: getDeviceSize(context).height / 2,
               color: whiteColor,
               // show list of recipes from api
-              child: SearchRecipeBlocBuilderWidget(searchQuery: _searchController.text),
+              child: SearchRecipeBlocBuilderWidget(searchQuery: _searchTextController.text),
             ),
           )
         ],
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _searchTextController.dispose();
+    super.dispose();
+  }
+
 }
 
 

@@ -8,12 +8,19 @@ class ApiRepository {
 
   final _provider = ApiProvider(Client());
 
-  Future<RecipeModel> searchRecipes(String query) {
-    return _provider.searchRecipes(query);
+  Future<RecipeModel> searchRecipes(String query) async {
+    try {
+      return await _provider.searchRecipes(query);
+    } catch (e) {
+      rethrow;
+    }
   }
 
-  Future<RecipeDetailsModel> getRecipeDetails(int recipeId) {
-    return _provider.getRecipeDetails(recipeId);
+  Future<RecipeDetailsModel> getRecipeDetails(int recipeId) async {
+    try {
+      return await _provider.getRecipeDetails(recipeId);
+    } catch (e) {
+      rethrow;
+    }
   }
-
 }

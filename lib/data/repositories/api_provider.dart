@@ -35,4 +35,8 @@ class ApiProvider {
       throw Exception('Failed to load recipes information');
     }
   }
+  // Closes the client and cleans up any resources associated with it.
+  void dispose() {
+    _client.close();
+  }
 }

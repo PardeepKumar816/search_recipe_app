@@ -5,11 +5,11 @@ import 'package:recipe_search_app/utils/constants.dart';
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
     Key? key,
-    required TextEditingController searchController,
+    required TextEditingController searchTextController,
     required this.function,
-  }) : _searchController = searchController, super(key: key);
+  }) : _searchTextController = searchTextController, super(key: key);
 
-  final TextEditingController _searchController;
+  final TextEditingController _searchTextController;
   final Function function;
 
   @override
@@ -17,7 +17,7 @@ class SearchTextField extends StatelessWidget {
     return SizedBox(
       width: getDeviceSize(context).width-160,
       child: TextField(
-        controller: _searchController,
+        controller: _searchTextController,
         style:  const TextStyle(
             color: whiteColor, fontSize: 20.0,fontWeight: FontWeight.w400),
         decoration: const  InputDecoration(
