@@ -5,7 +5,7 @@ import 'package:recipe_search_app/bloc/recipe_bloc/recipe_events.dart';
 import 'package:recipe_search_app/presentation/widgets/search_button.dart';
 import 'package:recipe_search_app/presentation/widgets/search_text_field.dart';
 import 'package:recipe_search_app/utils/colors.dart';
-import 'package:recipe_search_app/utils/constants.dart';
+import 'package:recipe_search_app/utils/helper_functions.dart';
 
 import 'clear_search_field_button.dart';
 

@@ -6,7 +6,7 @@ import 'package:recipe_search_app/presentation/widgets/recipe_data_buttons_row.d
 import 'package:recipe_search_app/presentation/widgets/recipe_details_list_view.dart';
 import 'package:recipe_search_app/presentation/widgets/recipes_box.dart';
 import 'package:recipe_search_app/utils/colors.dart';
-import 'package:recipe_search_app/utils/constants.dart';
+import 'package:recipe_search_app/utils/helper_functions.dart';
 
 
 class RecipeDetailsBlocProvider extends StatelessWidget {

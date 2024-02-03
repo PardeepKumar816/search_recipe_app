@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_search_app/utils/colors.dart';
-import 'package:recipe_search_app/utils/constants.dart';
+import 'package:recipe_search_app/utils/helper_functions.dart';
+
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
