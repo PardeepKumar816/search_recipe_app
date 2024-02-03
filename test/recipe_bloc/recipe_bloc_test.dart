@@ -12,7 +12,7 @@ import 'package:recipe_search_app/data/repositories/api_repository.dart';
 import 'recipe_bloc_test.mocks.dart';
 import '../test_constants/test_constants.dart';
 
-// To run the test => Flutter test test/recipe_bloc_t/recipe_bloc_test.dart
+// To run the test => Flutter test test/recipe_bloc/recipe_bloc_test.dart
 
 
 // Mocking the ApiRepository class
@@ -59,7 +59,7 @@ void main() {
         // act: Add a FetchRecipeEvent with query
         bloc.add(FetchRecipeEvent('any'));
       },
-      wait: const Duration(seconds: 2),
+      wait: const Duration(seconds: 3),
       expect: () => [
         // assert: Checking if the result meets the expected conditions
         isA<LoadingState>(),
@@ -80,7 +80,7 @@ void main() {
         // act: Add a FetchRecipeDetailsEvent with valid ID
         bloc.add(FetchRecipeDetailsEvent(654857));
       },
-      wait: const Duration(seconds: 2),
+      wait: const Duration(seconds: 3),
       expect: () => [
         // assert: Checking if the result meets the expected conditions
         isA<LoadingState>(),
@@ -100,7 +100,7 @@ void main() {
         // act: Add a FetchRecipeDetailsEvent with an invalid recipe ID
         bloc.add(FetchRecipeDetailsEvent(0));
       },
-      wait: const Duration(seconds: 2),
+      wait: const Duration(seconds: 3),
       expect: () => [
         // assert: Checking if the result meets the expected conditions
         isA<LoadingState>(),
