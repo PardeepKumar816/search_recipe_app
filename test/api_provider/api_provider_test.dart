@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
@@ -11,7 +12,8 @@ import 'api_provider_test.mocks.dart';
 // To run the test => Flutter test test/api_provider/api_provider_test.dart
 
 @GenerateMocks([http.Client])
-void main(){
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   late MockClient mockClient;
   late ApiProvider apiProvider;
 

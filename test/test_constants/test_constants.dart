@@ -1,11 +1,12 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:recipe_search_app/data/models/recipe_model.dart';
 import 'package:recipe_search_app/utils/strings.dart';
 
 final searchRecipeUrl =
-    Uri.parse("$baseURL/recipes/complexSearch?apiKey=$apiKey&query=pasta");
+    Uri.parse("$baseURL/recipes/complexSearch?apiKey=${dotenv.get("APIKEY")}&query=pasta");
 
 final getRecipeDetailsUrl = Uri.parse(
-    '$baseURL/recipes/654857/information?apiKey=$apiKey&includeNutrition=true&addRecipeInformation=true');
+    '$baseURL/recipes/654857/information?apiKey=${dotenv.get("APIKEY")}&includeNutrition=true&addRecipeInformation=true');
 
 
 

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -30,7 +31,8 @@ RecipeDetailsModel getMockRecipeDetailsModel(){
 
 // generating mocks using the annotations
 @GenerateMocks([MockApiRepository])
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   group('RecipeBloc', () {
     late RecipeBloc recipeBloc;
     late MockMockApiRepository mockApiRepository;

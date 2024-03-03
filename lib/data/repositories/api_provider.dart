@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:recipe_search_app/data/models/recipe_details_model.dart';
 import 'package:recipe_search_app/data/models/recipe_model.dart';
 import 'package:http/http.dart' as http;
@@ -14,7 +15,7 @@ class ApiProvider {
    Future<RecipeModel> searchRecipes(String query) async {
 
       final response = await _client.get(
-        Uri.parse("$baseURL/recipes/complexSearch?apiKey=$apiKey&query=$query"),
+        Uri.parse("$baseURL/recipes/complexSearch?apiKey=${dotenv.get("APIKEY")}&query=$query"),
       );
       if(response.statusCode == 200){
         final data = json.decode(response.body);
@@ -28,7 +29,7 @@ class ApiProvider {
 
       final response = await _client.get(
         Uri.parse(
-            '$baseURL/recipes/$recipeId/information?apiKey=$apiKey&includeNutrition=true&addRecipeInformation=true'),
+            '$baseURL/recipes/$recipeId/information?apiKey=${dotenv.get("APIKEY")}&includeNutrition=true&addRecipeInformation=true'),
       );
       if(response.statusCode==200){
         final data = json.decode(response.body);
